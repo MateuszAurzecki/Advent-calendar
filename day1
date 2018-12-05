@@ -7,15 +7,11 @@ using namespace std;
 void day1_part1();
 void day1_part2();
 
-fstream data;
-
 int main() {
-	
 	
 	day1_part1();
 	day1_part2();
-
-
+	
 	system("pause");
 }
 
@@ -44,28 +40,22 @@ void day1_part1() {
 }
 
 
-
-
-
 void day1_part2() {
 
 	fstream data;
 	string bufor;
 	int number;
+	long long result = 0;
+	int loop_number = 0;
+	vector <long> tab = { 0 };
+	bool keep_working = true;
 
 	if (data.good() == false)
 	{
 		cout << "File could not be open!";
 		system("pause");
 		exit(0);
-
 	}
-
-
-	long long result = 0;
-	int loop_number = 0;
-	vector <long> tab = { 0 };
-	bool keep_working = true;
 
 	while (keep_working) {
 		data.open("C:\\Users\\mateu\\Desktop\\adv.txt", ios::in);
