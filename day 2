@@ -1,0 +1,50 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include <vector>
+using namespace std;
+
+const int max_char = 26;
+
+int main() {
+	string bufor, input;
+	fstream data;
+	int char_num[max_char] = { 0 };
+	bool num_two = false;
+	bool num_three = false;
+	long result;
+	int count_two = 0;
+	int count_three = 0;
+
+	data.open("adv.txt", ios::in);
+
+	while (getline(data, bufor)) {
+		input = bufor;
+		
+		for (int i = 0; i < input.size(); i++) {
+			char_num[input[i] - 'a']++;
+		}
+
+		for (int i = 0; i < max_char; i++) {
+			
+			if (char_num[i] == 2) num_two = true;
+			else if (char_num[i] == 3) num_three = true;
+			char_num[i] = 0;
+		}
+
+		if (num_two == true) count_two++;
+		if (num_three == true) count_three++;
+		num_two = false;
+		num_three = false;
+	}
+
+	result = count_two * count_three;
+	cout << result << endl;
+	
+	data.close();
+	system("pause");
+}
+
+
+
+
